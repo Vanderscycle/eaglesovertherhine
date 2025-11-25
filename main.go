@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-"github.com/vanderscycle/eaglesOverTheRhine/lib"
+"github.com/vanderscycle/eaglesovertherhine/lib"
 )
 
 func main() {
-	result := units.Hello("bob")
-	fmt.Printg("%s",result)
+	result := lib.Hello("bob")
+	fmt.Printf("%s",result)
 }
