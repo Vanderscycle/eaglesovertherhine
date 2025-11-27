@@ -1,16 +1,15 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/vanderscycle/eaglesovertherhine/lib"
-	"github.com/vanderscycle/eaglesovertherhine/lib/company"
+	"github.com/vanderscycle/eaglesovertherhine/lib/pops"
+	"github.com/vanderscycle/eaglesovertherhine/lib/units"
 )
 
 func main() {
-	firstCompany := company.New("1st Company ")
-	firstCompany.Status
+	firstCompany := units.NewCompany("1st Company")
+	firstCompany.Status()
 
-	result := lib.Hello("bob")
-	fmt.Printf("%s",result)
+	firstSoldat := pops.NewSoldier()
+	firstSoldat.Status()
+	firstCompany.ListPrivates()
 }

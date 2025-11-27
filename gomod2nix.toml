@@ -1,3 +1,6 @@
 schema = 3
 
 [mod]
+  [mod."github.com/brianvoe/gofakeit/v7"]
+    version = "v7.11.0"
+    hash = "sha256-0yE5IO8KuE6ZkSqNOTmVjbhgxAB73N1sNpwcjsxm/Xs="
