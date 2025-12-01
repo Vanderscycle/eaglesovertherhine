@@ -2,6 +2,7 @@ package pops
 
 import (
 	"fmt"
+
 	"github.com/brianvoe/gofakeit/v7"
 )
 
@@ -10,13 +11,14 @@ type MilitaryPop struct {
 	lastName  string
 	rank      Rank
 	nation    Nation
+	role Role
 }
 
-func NewSoldier() MilitaryPop{
-m := MilitaryPop{firstName: gofakeit.FirstName(),lastName: gofakeit.LastName(),rank: Soldat,nation: France}
+func NewSoldier(rank Rank, nation Nation, role Role) MilitaryPop {
+	m := MilitaryPop{firstName: gofakeit.FirstName(), lastName: gofakeit.LastName(), rank: rank, nation: nation, role: role }
 	return m
 }
 
-func (m MilitaryPop) Status(){
-fmt.Printf("the %s name is: %s %s\n", m.rank,m.firstName,m.lastName)
+func (m MilitaryPop) Status() {
+	fmt.Printf("%+v\n", m)
 }

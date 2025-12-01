@@ -1,5 +1,28 @@
 package pops
 
+type Role int
+
+const (
+	Soldier Role = iota
+	Nco
+	Officier
+	Support
+	Music
+	Civilian
+)
+
+var AssignedRole = map[Role]string{
+	Soldier: "Soldier",
+	Nco: "Non-Commisioned Officer",
+	Officier: "Officier",
+	Support: "Support",
+	Music: "Musician",
+	Civilian: "Civilian",
+}
+func (r Role) String() string {
+    return AssignedRole[r]
+}
+
 type Rank int
 
 const (
