@@ -6,8 +6,8 @@ const (
 	Soldier Role = iota
 	Nco
 	Officier
-	Support
-	Music
+	Logistics
+	MusicColours
 	Civilian
 )
 
@@ -15,12 +15,23 @@ var AssignedRole = map[Role]string{
 	Soldier: "Soldier",
 	Nco: "Non-Commisioned Officer",
 	Officier: "Officier",
-	Support: "Support",
-	Music: "Musician",
+	Logistics: "Logistics",
+	MusicColours: "Musician and Colours",
 	Civilian: "Civilian",
 }
 func (r Role) String() string {
     return AssignedRole[r]
+}
+type Sex int
+
+const (
+	Male Sex = iota
+	Female
+)
+
+var PopsSex =  map[Sex]string{
+Male : "Male",
+Female : "Female",
 }
 
 type Rank int
@@ -36,7 +47,7 @@ const (
 	SousLieutenant
 	Lieutenant
 	Capitaine
-	ChefDeBattaillon
+	ChefDeBattalion
 	MajorEnSecond
 	Major
 )
@@ -52,7 +63,7 @@ var AssignedRank = map[Rank]string{
 	SousLieutenant:       "Sous Lieutenant",
 	Lieutenant:           "Lieutenant",
 	Capitaine:            "Capitaine",
-	ChefDeBattaillon:     "Chef de Battaillon",
+	ChefDeBattalion:     "Chef de Battaillon",
 	MajorEnSecond:        "Major en Second",
 	Major:                "Major",
 }

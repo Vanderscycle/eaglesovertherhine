@@ -13,5 +13,5 @@ var EnglishCompanyDefault = units.CompanyTemplate{
 	SergentMajor:    1,
 	SousLieutenants: 1,
 	Lieutenants:     1,
-	Capitaine:       1,
+	Capitaines:       1,
 }

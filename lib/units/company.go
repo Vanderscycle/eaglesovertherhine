@@ -8,18 +8,6 @@ import (
 )
 
 // TODO: create person class w/ rank, name,  + history (battles/medals/promotions)
-type CompanyTemplate struct {
-	Soldats         int16
-	Caporals        int16
-	CaporalFourrier int16
-	Drummers        int16
-	Sergents        int16
-	SergentMajor    int16
-	SousLieutenants int16
-	Lieutenants     int16
-	Capitaine       int16
-}
-
 type company struct {
 	name            string
 	nickname        string
@@ -31,7 +19,7 @@ type company struct {
 	sergentMajor    []pops.MilitaryPop
 	sousLieutenants []pops.MilitaryPop
 	lieutenants     []pops.MilitaryPop
-	capitaine       []pops.MilitaryPop
+	capitaines       []pops.MilitaryPop
 	template        CompanyTemplate
 	nation          pops.Nation
 	history string
@@ -50,24 +38,24 @@ func NewCompany(name string, template CompanyTemplate, nation pops.Nation) compa
 		for j := 0; j <= count; j++ {
 			//fmt.Printf("%d\n", j)
 			switch fieldName {
-			case "soldats":
+			case "Soldats":
 				c.soldats = append(c.soldats, pops.NewSoldier(pops.Soldat, nation, pops.Soldier))
-			case "caporals":
+			case "Caporals":
 				c.caporals = append(c.caporals, pops.NewSoldier(pops.Caporal,nation,pops.Soldier))
-			case "caporalFourrier":
-				c.caporalFourrier = append(c.caporalFourrier, pops.NewSoldier(pops.CaporalFourrier,nation,pops.Support))
-			case "drummers":
-				c.drummers = append(c.drummers, pops.NewSoldier(pops.Soldat,nation,pops.Support))
-			case "sergents":
+			case "CaporalFourrier":
+				c.caporalFourrier = append(c.caporalFourrier, pops.NewSoldier(pops.CaporalFourrier,nation,pops.Logistics))
+			case "Drummers":
+				c.drummers = append(c.drummers, pops.NewSoldier(pops.Soldat,nation,pops.MusicColours))
+			case "Sergents":
 				c.sergents = append(c.sergents, pops.NewSoldier(pops.Sergent,nation, pops.Nco))
-			case "sergentMajor":
+			case "SergentMajor":
 				c.sergentMajor = append(c.sergentMajor, pops.NewSoldier(pops.SergentMajor,nation, pops.Nco))
-			case "sousLieutenant":
+			case "SousLieutenants":
 				c.sousLieutenants = append(c.sousLieutenants, pops.NewSoldier(pops.SousLieutenant,nation, pops.Officier))
-			case "lieutenant":
+			case "Lieutenants":
 				c.lieutenants = append(c.lieutenants, pops.NewSoldier(pops.Lieutenant,nation, pops.Officier))
-			case "captain":
-				c.capitaine = append(c.capitaine, pops.NewSoldier(pops.Capitaine,nation, pops.Officier))
+			case "Capitaines":
+				c.capitaines = append(c.capitaines, pops.NewSoldier(pops.Capitaine,nation, pops.Officier))
 			}
 		}
 	}
@@ -79,13 +67,5 @@ func (c company) Status() {
 }
 
 func (c company) ListSoldiers() {
-	for _, s := range c.soldats {
-		s.Status()
-	}
-	for _, s := range c.caporals {
-		s.Status()
-	}
-	for _, s := range c.sergents {
-		s.Status()
-	}
+		fmt.Printf("%+v\n", c)
 }
