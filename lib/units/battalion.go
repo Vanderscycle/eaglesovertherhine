@@ -14,20 +14,19 @@ type battalion struct {
 	adjudantMajor        []pops.MilitaryPop
 	chefDeBattalion      []pops.MilitaryPop
 	companies            []company
-	companyTemplate CompanyTemplate
+	companyTemplate      CompanyTemplate
 	template             BattalionCompanyTemplate
 	nation               pops.Nation
 	history              string
 }
 
-func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplate CompanyTemplate, nation pops.Nation)battalion {
+func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplate CompanyTemplate, nation pops.Nation) battalion {
 	b := battalion{name: name, nickname: "unearned", template: template, history: "TODO"}
 
-
 	// battalion staff generation
-	b.adjudantSousOfficier = append(b.adjudantSousOfficier, pops.NewSoldier(pops.AdjudantSousOfficier,nation, pops.Nco))
-	b.adjudantMajor = append(b.adjudantMajor, pops.NewSoldier(pops.AdjudantMajor,nation, pops.Nco))
-	b.chefDeBattalion = append(b.chefDeBattalion, pops.NewSoldier(pops.ChefDeBattalion,nation, pops.Officier))
+	b.adjudantSousOfficier = append(b.adjudantSousOfficier, pops.NewSoldier(pops.AdjudantSousOfficier, nation, pops.Nco))
+	b.adjudantMajor = append(b.adjudantMajor, pops.NewSoldier(pops.AdjudantMajor, nation, pops.Nco))
+	b.chefDeBattalion = append(b.chefDeBattalion, pops.NewSoldier(pops.ChefDeBattalion, nation, pops.Officier))
 
 	// company generation
 	tmplVal := reflect.ValueOf(b.template)
@@ -38,7 +37,7 @@ func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplat
 		count := int(tmplVal.Field(i).Int())
 		//fmt.Printf("%s\n", fieldName)
 		for j := 0; j < count; j++ {
-			compInt := j+1
+			compInt := j + 1
 			fmt.Printf("\n%d %s\n", j, fieldName)
 			switch fieldName {
 			case "Chasseurs":
@@ -65,4 +64,4 @@ func (b battalion) ListCompanies() {
 	for _, s := range b.companies {
 		fmt.Printf("%+v\n", s)
 	}
-	}
+}

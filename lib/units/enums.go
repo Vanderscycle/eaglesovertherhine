@@ -18,10 +18,10 @@ var AssignedCompanySpecialization = map[CompanySpecialization]string{
 	Grenadiers:  "Grenadiers",
 }
 
-
 func (s CompanySpecialization) String() string {
-    return AssignedCompanySpecialization[s]
+	return AssignedCompanySpecialization[s]
 }
+
 type CompanyTemplate struct {
 	Soldats         int16
 	Caporals        int16
@@ -31,13 +31,13 @@ type CompanyTemplate struct {
 	SergentMajor    int16
 	SousLieutenants int16
 	Lieutenants     int16
-	Capitaines       int16
+	Capitaines      int16
 }
 
 type BattalionCompanyTemplate struct {
-	Chasseurs int16
-	Voltigeurs int16
+	Chasseurs   int16
+	Voltigeurs  int16
 	Carabiniers int16
-	Fusiliers int16
-	Grenadiers int16
+	Fusiliers   int16
+	Grenadiers  int16
 }

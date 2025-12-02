@@ -12,16 +12,18 @@ const (
 )
 
 var AssignedRole = map[Role]string{
-	Soldier: "Soldier",
-	Nco: "Non-Commisioned Officer",
-	Officier: "Officier",
-	Logistics: "Logistics",
+	Soldier:      "Soldier",
+	Nco:          "Non-Commisioned Officer",
+	Officier:     "Officier",
+	Logistics:    "Logistics",
 	MusicColours: "Musician and Colours",
-	Civilian: "Civilian",
+	Civilian:     "Civilian",
 }
+
 func (r Role) String() string {
-    return AssignedRole[r]
+	return AssignedRole[r]
 }
+
 type Sex int
 
 const (
@@ -29,9 +31,9 @@ const (
 	Female
 )
 
-var PopsSex =  map[Sex]string{
-Male : "Male",
-Female : "Female",
+var PopsSex = map[Sex]string{
+	Male:   "Male",
+	Female: "Female",
 }
 
 type Rank int
@@ -63,13 +65,13 @@ var AssignedRank = map[Rank]string{
 	SousLieutenant:       "Sous Lieutenant",
 	Lieutenant:           "Lieutenant",
 	Capitaine:            "Capitaine",
-	ChefDeBattalion:     "Chef de Battaillon",
+	ChefDeBattalion:      "Chef de Battaillon",
 	MajorEnSecond:        "Major en Second",
 	Major:                "Major",
 }
 
 func (r Rank) String() string {
-    return AssignedRank[r]
+	return AssignedRank[r]
 }
 
 type Nation int
@@ -85,6 +87,7 @@ var AssignedNation = map[Nation]string{
 	Austria:  "Austria",
 	Brittain: "Brittain",
 }
+
 func (n Nation) String() string {
-    return AssignedNation[n]
+	return AssignedNation[n]
 }

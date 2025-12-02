@@ -17,7 +17,7 @@ type MilitaryPop struct {
 }
 
 func NewSoldier(rank Rank, nation Nation, role Role) MilitaryPop {
-	m := MilitaryPop{firstName: gofakeit.FirstName(), lastName: gofakeit.LastName(), rank: rank, nation: nation, role: role }
+	m := MilitaryPop{firstName: gofakeit.FirstName(), lastName: gofakeit.LastName(), rank: rank, nation: nation, role: role}
 	return m
 }
 
