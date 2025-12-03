@@ -10,7 +10,7 @@ import (
 // TODO: create person class w/ rank, name,  + history (battles/medals/promotions)
 type company struct {
 	name            string
-	nickname        string
+	bloodname       string
 	soldats         []pops.MilitaryPop
 	caporals        []pops.MilitaryPop
 	caporalFourrier []pops.MilitaryPop
@@ -26,7 +26,7 @@ type company struct {
 }
 
 func NewCompany(name string, template CompanyTemplate, nation pops.Nation) company {
-	c := company{name: name, nickname: "unearned", template: template, history: "TODO"}
+	c := company{name: name, bloodname: "unearned", template: template, history: "TODO"}
 
 	tmplVal := reflect.ValueOf(c.template)
 	tmplType := reflect.TypeOf(c.template)
@@ -64,6 +64,10 @@ func NewCompany(name string, template CompanyTemplate, nation pops.Nation) compa
 
 func (c company) Status() {
 	fmt.Printf("The company's name: %s and country %s\nTemplate: %+v\n", c.name, c.nation, c.template)
+}
+
+func (c *company) EarnBloodName(name string) {
+	c.bloodname = name
 }
 
 func (c company) ListSoldiers() {

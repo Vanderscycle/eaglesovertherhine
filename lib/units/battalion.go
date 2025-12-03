@@ -9,7 +9,7 @@ import (
 
 type battalion struct {
 	name                 string
-	nickname             string
+	bloodname            string
 	adjudantSousOfficier []pops.MilitaryPop
 	adjudantMajor        []pops.MilitaryPop
 	chefDeBattalion      []pops.MilitaryPop
@@ -21,7 +21,7 @@ type battalion struct {
 }
 
 func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplate CompanyTemplate, nation pops.Nation) battalion {
-	b := battalion{name: name, nickname: "unearned", template: template, history: "TODO"}
+	b := battalion{name: name, bloodname: "unearned", template: template, history: "TODO"}
 
 	// battalion staff generation
 	b.adjudantSousOfficier = append(b.adjudantSousOfficier, pops.NewSoldier(pops.AdjudantSousOfficier, nation, pops.Nco))
@@ -36,9 +36,9 @@ func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplat
 		fieldName := tmplType.Field(i).Name
 		count := int(tmplVal.Field(i).Int())
 		//fmt.Printf("%s\n", fieldName)
-		for j := 0; j < count; j++ {
+		for j := range count {
 			compInt := j + 1
-			fmt.Printf("\n%d %s\n", j, fieldName)
+			// fmt.Printf("\n%d %s\n", compInt, fieldName)
 			switch fieldName {
 			case "Chasseurs":
 				b.companies = append(b.companies, NewCompany(fmt.Sprintf("%d Chasseurs", compInt), companyTemplate, nation))
@@ -49,7 +49,7 @@ func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplat
 			case "Fusiliers":
 				b.companies = append(b.companies, NewCompany(fmt.Sprintf("%d Fusiliers", compInt), companyTemplate, nation))
 			case "Grenadiers":
-				b.companies = append(b.companies, NewCompany(fmt.Sprintf("%d Chasseur", compInt), companyTemplate, nation))
+				b.companies = append(b.companies, NewCompany(fmt.Sprintf("%d Grenadiers", compInt), companyTemplate, nation))
 			}
 		}
 	}
@@ -57,7 +57,23 @@ func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplat
 }
 
 func (b battalion) Status() {
-	fmt.Printf("The battalion's name: %s and country %s\nTemplate: %+v\n", b.name, b.nation, b.template)
+	fmt.Printf("The battalion's name: %s, nickname: %s and country %s\nTemplate: %+v\n", b.name, b.bloodname, b.nation, b.template)
+}
+
+func (b *battalion) EarnBloodName(name string) {
+	b.bloodname = name
+}
+
+// TODO: make a note about this func returning a pointer
+func (b battalion) GetCompany(name string) *company {
+	for i := range b.companies {
+		fmt.Printf("company: %s bloodname: %s\n", b.companies[i].bloodname, b.companies[i].name)
+		if b.companies[i].name == name {
+			fmt.Printf("found comp's capitatine! %+v\n", b.companies[i].capitaines)
+			return &b.companies[i]
+		}
+	}
+	return &b.companies[0]
 }
 
 func (b battalion) ListCompanies() {

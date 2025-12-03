@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/vanderscycle/eaglesovertherhine/lib/nations"
 	"github.com/vanderscycle/eaglesovertherhine/lib/pops"
 	"github.com/vanderscycle/eaglesovertherhine/lib/units"
@@ -12,8 +14,12 @@ func main() {
 	// firstCompany.ListSoldiers()
 
 	firstBattation := units.NewBattalion("1st Battalion", nations.FrenchLightInfantryBattalion, nations.FrenchCompanyDefault, pops.France)
+	firstBattation.EarnBloodName("Unbowed")
 	firstBattation.Status()
-	firstBattation.ListCompanies()
+	comp := firstBattation.GetCompany("1 Voltigeurs")
+	comp.EarnBloodName("Unbroken")
+	fmt.Printf("%+v/n", comp)
+	//firstBattation.ListCompanies()
 
 	// firstSoldat := pops.NewSoldier()
 	// firstSoldat.Status()
