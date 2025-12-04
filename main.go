@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 
 	"github.com/vanderscycle/eaglesovertherhine/lib/nations"
 	"github.com/vanderscycle/eaglesovertherhine/lib/pops"
@@ -9,18 +9,23 @@ import (
 )
 
 func main() {
-	// firstCompany := units.NewCompany("1st Company", nations.FrenchCompanyDefault, pops.France)
-	// firstCompany.Status()
-	// firstCompany.ListSoldiers()
 
-	firstBattation := units.NewBattalion("1st Battalion", nations.FrenchLightInfantryBattalion, nations.FrenchCompanyDefault, pops.France)
-	firstBattation.EarnBloodName("Unbowed")
-	firstBattation.Status()
-	comp := firstBattation.GetCompany("1 Voltigeurs")
-	comp.EarnBloodName("Unbroken")
-	fmt.Printf("%+v/n", comp)
+	// Batalion
+	// firstBattation := units.NewBattalion("1st Battalion", nations.FrenchLightInfantryBattalion, nations.FrenchCompanyDefault, pops.France)
+	// firstBattation.EarnBloodName("Unbowed")
+	// firstBattation.Status()
+	// comp := firstBattation.GetCompany("1 Voltigeurs")
+	// comp.EarnBloodName("Unbroken")
+	// fmt.Printf("%+v/n", comp)
 	//firstBattation.ListCompanies()
 
-	// firstSoldat := pops.NewSoldier()
-	// firstSoldat.Status()
+	firstCompany := units.NewCompany("1st Company", nations.FrenchCompanyDefault, pops.France)
+	firstCompany.Status()
+	firstCompany.ListSoldiers()
+
+	firstSoldat := pops.NewSoldier(pops.AdjudantMajor,pops.France,pops.Nco)
+	firstSoldat.Status()
+
+	firstCiv:= pops.NewCivilian(pops.France,pops.Farmer)
+	firstCiv.Status()
 }

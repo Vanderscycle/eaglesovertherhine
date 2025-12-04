@@ -71,5 +71,8 @@ func (c *company) EarnBloodName(name string) {
 }
 
 func (c company) ListSoldiers() {
-	fmt.Printf("%+v\n", c)
+	for i := range c.soldats{
+		fmt.Printf("full name: %s %s, rank: %s\n",c.soldats[i].FirstName,c.soldats[i].LastName,c.soldats[i].Rank.String())
+		//fmt.Printf("%+v\n",c.soldats[i])
+	}
 }

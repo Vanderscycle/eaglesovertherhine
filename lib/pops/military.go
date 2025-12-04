@@ -1,23 +1,24 @@
 package pops
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/brianvoe/gofakeit/v7"
 )
 
 type MilitaryPop struct {
-	firstName string
-	lastName  string
-	rank      Rank
-	nation    Nation
-	role      Role
+	FirstName string
+	LastName  string
+	Rank      Rank
+	Nation    Nation
+	Role      MilitaryRole
 	// sex       Sex
 	// age       int16
 }
 
-func NewSoldier(rank Rank, nation Nation, role Role) MilitaryPop {
-	m := MilitaryPop{firstName: gofakeit.FirstName(), lastName: gofakeit.LastName(), rank: rank, nation: nation, role: role}
+func NewSoldier(rank Rank, nation Nation, role MilitaryRole) MilitaryPop {
+	m := MilitaryPop{FirstName: gofakeit.FirstName(), LastName: gofakeit.LastName(), Rank: rank, Nation: nation, Role: role}
 	return m
 }
 
@@ -27,5 +28,6 @@ func NewSoldier(rank Rank, nation Nation, role Role) MilitaryPop {
 // }
 
 func (m MilitaryPop) Status() {
-	fmt.Printf("%+v\n", m)
+    b, _ := json.MarshalIndent(m, "", "  ")
+    fmt.Println(string(b))
 }

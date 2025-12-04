@@ -13,6 +13,9 @@ type battalion struct {
 	adjudantSousOfficier []pops.MilitaryPop
 	adjudantMajor        []pops.MilitaryPop
 	chefDeBattalion      []pops.MilitaryPop
+	flagBearer           pops.MilitaryPop
+	drivers              []pops.CivilianPop
+	cantinieres          []pops.CivilianPop
 	companies            []company
 	companyTemplate      CompanyTemplate
 	template             BattalionCompanyTemplate
@@ -27,6 +30,12 @@ func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplat
 	b.adjudantSousOfficier = append(b.adjudantSousOfficier, pops.NewSoldier(pops.AdjudantSousOfficier, nation, pops.Nco))
 	b.adjudantMajor = append(b.adjudantMajor, pops.NewSoldier(pops.AdjudantMajor, nation, pops.Nco))
 	b.chefDeBattalion = append(b.chefDeBattalion, pops.NewSoldier(pops.ChefDeBattalion, nation, pops.Officier))
+	b.flagBearer = pops.NewSoldier(pops.Caporal, nation, pops.MusicColours)
+
+	for i:=0; i<=4;i++{
+		b.drivers = append(b.drivers,pops.NewCivilian(b.nation, pops.MilitarySupport))
+		b.cantinieres = append(b.drivers,pops.NewCivilian(b.nation, pops.MilitarySupport))
+	}
 
 	// company generation
 	tmplVal := reflect.ValueOf(b.template)

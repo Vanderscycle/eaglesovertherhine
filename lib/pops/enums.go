@@ -1,9 +1,47 @@
 package pops
 
-type Role int
+import "encoding/json"
+
+type CivilianRole int
 
 const (
-	Soldier Role = iota
+	Farmer CivilianRole = iota
+	Miner
+	Physician
+	Researcher
+	FactoryWorker
+	HouseKeeper
+	Sailor
+	Clergyman
+	Baker
+MilitarySupport
+)
+
+var AssignedCivilianRole = map[CivilianRole]string{
+	Farmer: "Farmer",
+	Miner: "Miner",
+	Physician: "Physician",
+	Researcher: "Researcher",
+	FactoryWorker: "Factory Worker",
+	HouseKeeper: "Housekeeper",
+	Sailor: "Sailor",
+	Clergyman: "Clergyman",
+	Baker: "Baker",
+	MilitarySupport: "Military Support",
+}
+
+func (c CivilianRole) String() string {
+	return AssignedCivilianRole[c]
+}
+
+func (c CivilianRole) MarshalJSON() ([]byte, error) {
+    return json.Marshal(c.String())
+}
+
+type MilitaryRole int
+
+const (
+	Soldier MilitaryRole = iota
 	Nco
 	Officier
 	Logistics
@@ -11,7 +49,7 @@ const (
 	Civilian
 )
 
-var AssignedRole = map[Role]string{
+var AssignedRole = map[MilitaryRole]string{
 	Soldier:      "Soldier",
 	Nco:          "Non-Commisioned Officer",
 	Officier:     "Officier",
@@ -20,8 +58,12 @@ var AssignedRole = map[Role]string{
 	Civilian:     "Civilian",
 }
 
-func (r Role) String() string {
-	return AssignedRole[r]
+func (m MilitaryRole) String() string {
+	return AssignedRole[m]
+}
+
+func (m MilitaryRole) MarshalJSON() ([]byte, error) {
+    return json.Marshal(m.String())
 }
 
 type Sex int
@@ -74,6 +116,10 @@ func (r Rank) String() string {
 	return AssignedRank[r]
 }
 
+func (r Rank) MarshalJSON() ([]byte, error) {
+    return json.Marshal(r.String())
+}
+
 type Nation int
 
 const (
@@ -90,4 +136,8 @@ var AssignedNation = map[Nation]string{
 
 func (n Nation) String() string {
 	return AssignedNation[n]
+}
+
+func (n Nation) MarshalJSON() ([]byte, error) {
+    return json.Marshal(n.String())
 }
