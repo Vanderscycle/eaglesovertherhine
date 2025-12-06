@@ -22,6 +22,7 @@ func NewCivilian( nation Nation, role CivilianRole) CivilianPop {
 }
 
 func (c CivilianPop) Status() {
-    b, _ := json.MarshalIndent(c, "", "  ")
+    b, _ := json.Marshal(c)
+    //b, _ := json.MarshalIndent(c, "", "  ")
     fmt.Println(string(b))
 }

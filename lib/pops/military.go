@@ -28,6 +28,6 @@ func NewSoldier(rank Rank, nation Nation, role MilitaryRole) MilitaryPop {
 // }
 
 func (m MilitaryPop) Status() {
-    b, _ := json.MarshalIndent(m, "", "  ")
+    b, _ := json.Marshal(m)
     fmt.Println(string(b))
 }

@@ -3,6 +3,7 @@ package main
 import (
 	//"fmt"
 
+	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/vanderscycle/eaglesovertherhine/lib/nations"
 	"github.com/vanderscycle/eaglesovertherhine/lib/pops"
 	"github.com/vanderscycle/eaglesovertherhine/lib/units"
@@ -28,4 +29,11 @@ func main() {
 
 	firstCiv:= pops.NewCivilian(pops.France,pops.Farmer)
 	firstCiv.Status()
+
+	g := &Game{}
+
+	err := ebiten.RunGame(g)
+	if err != nil {
+		panic(err)
+	}
 }
