@@ -1,6 +1,7 @@
 package engine
 
-import "github.com/hajimehoshi/ebiten"
+import (
+)
 
 type OptionMenu struct{
 	height int
@@ -9,9 +10,4 @@ type OptionMenu struct{
 var DefaultOptionMenu = OptionMenu{
 	height: 1024,
 	width: 768,
-}
-
-func (g *GameEngine) Option(optionMenu OptionMenu) {
-	ebiten.SetWindowSize( optionMenu.width,optionMenu.height)
-	g.Layout(optionMenu.width, optionMenu.height)
 }

@@ -10,7 +10,7 @@ import (
 //go:embed *
 var assets embed.FS
 
-var StartSprites = mustLoadImage("start/*.*")
+var StartSprites = mustLoadImage("start/ken.jpg")
 
 func mustLoadImage(name string) *ebiten.Image {
 	f, err := assets.Open(name)

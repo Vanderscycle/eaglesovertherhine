@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/vanderscycle/eaglesovertherhine/engine"
@@ -35,6 +35,6 @@ func main() {
 
 	err := ebiten.RunGame(g)
 	if err != nil {
-		fmt.Print(err)
+		log.Fatal(err)
 	}
 }
