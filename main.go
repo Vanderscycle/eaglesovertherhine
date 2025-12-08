@@ -1,27 +1,15 @@
 package main
 
 import (
-	//"fmt"
+	"fmt"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/vanderscycle/eaglesovertherhine/engine"
 	"github.com/vanderscycle/eaglesovertherhine/lib/nations"
 	"github.com/vanderscycle/eaglesovertherhine/lib/pops"
 	"github.com/vanderscycle/eaglesovertherhine/lib/units"
 )
 
-type Game struct{}
-
-func (g *Game) Update() error {
-	return nil
-}
-
-func (g *Game) Draw(screen *ebiten.Image) {
-
-}
-
-func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return outsideWidth, outsideHeight
-}
 func main() {
 
 	// Batalion
@@ -43,10 +31,10 @@ func main() {
 	firstCiv:= pops.NewCivilian(pops.France,pops.Farmer)
 	firstCiv.Status()
 
-	g := &Game{}
+	g := engine.NewGame()
 
 	err := ebiten.RunGame(g)
 	if err != nil {
-		panic(err)
+		fmt.Print(err)
 	}
 }

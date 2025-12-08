@@ -1,17 +1,29 @@
-package game
+package engine
 
-import(  "github.com/hajimehoshi/ebiten/v2" )
+import (
+	//"github.com/hajimehoshi/ebiten/ebitenutil"
+	"github.com/hajimehoshi/ebiten/v2"
+)
 
-type Game struct{}
+type GameEngine struct{}
 
-func (g *Game) Update() error {
+func (g *GameEngine) Update() error {
 	return nil
 }
 
-func (g *Game) Draw(screen *ebiten.Image) {
+func (g *GameEngine) Draw(screen *ebiten.Image) {
+	//ebitenutil.DebugPrint(screen, "Hello, World!")
 
 }
 
-func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
+
+func (g *GameEngine) Layout(outsideWidth, outsideHeight int) (screenWidth int, screenHeight int) {
 	return outsideWidth, outsideHeight
+}
+
+func NewGame() *GameEngine {
+	g := &GameEngine{}
+	ebiten.SetWindowTitle("Eagles Over the Rhine")
+	g.Option(DefaultOptionMenu)
+	return g
 }
