@@ -8,49 +8,62 @@ import (
 	"github.com/vanderscycle/eaglesovertherhine/assets"
 )
 
-func (g *GameEngine) startScreen(screen *ebiten.Image, margin float64) {
-    if g.startImage == nil {
-        return
-    }
+// technically this centers an image accross the whole screen
+// for menus and layout I'll have to craete my own css to layout
+func startScreen(image *ebiten.Image, screen *ebiten.Image, margin float64) {
+	// TODO create an error
+	if image == nil {
+		return
+	}
 
-    // Get dimensions
-    screenWidth := float64(screen.Bounds().Dx())
-    screenHeight := float64(screen.Bounds().Dy())
-    imgWidth := float64(g.startImage.Bounds().Dx())
-    imgHeight := float64(g.startImage.Bounds().Dy())
+	// Get dimensions
+	screenWidth := float64(screen.Bounds().Dx())
+	screenHeight := float64(screen.Bounds().Dy())
+	imgWidth := float64(image.Bounds().Dx())
+	imgHeight := float64(image.Bounds().Dy())
 
-    // Calculate available area after margin
-    availableWidth := screenWidth - (2 * margin)
-    availableHeight := screenHeight - (2 * margin)
+	// Calculate available area after margin
+	availableWidth := screenWidth - (2 * margin)
+	availableHeight := screenHeight - (2 * margin)
 
-    // Calculate scale to fit within the available area (maintain aspect ratio)
-    scaleX := availableWidth / imgWidth
-    scaleY := availableHeight / imgHeight
-    scale := math.Min(scaleX, scaleY)
+	// Calculate scale to fit within the available area (maintain aspect ratio)
+	scaleX := availableWidth / imgWidth
+	scaleY := availableHeight / imgHeight
+	scale := math.Min(scaleX, scaleY)
 
-    // Calculate centered position within the available area
-    scaledWidth := imgWidth * scale
-    scaledHeight := imgHeight * scale
+	// Calculate centered position within the available area
+	scaledWidth := imgWidth * scale
+	scaledHeight := imgHeight * scale
 
-    // Center in the available area, then add margin to position
-    posX := margin + (availableWidth - scaledWidth) / 2
-    posY := margin + (availableHeight - scaledHeight) / 2
+	// Center in the available area, then add margin to position
+	posX := margin + (availableWidth-scaledWidth)/2
+	posY := margin + (availableHeight-scaledHeight)/2
 
-    // Draw image
-    opts := &ebiten.DrawImageOptions{}
-    opts.GeoM.Scale(scale, scale)
-    opts.GeoM.Translate(posX, posY)
+	// Draw image
+	optsImg := &ebiten.DrawImageOptions{}
+	optsImg.GeoM.Scale(scale, scale)
+	optsImg.GeoM.Translate(posX, posY)
 
-    screen.DrawImage(g.startImage, opts)
-    // write the text
-    text.Draw(
-        screen,
-        "test0oO",
-        text.NewGoXFace(assets.GameFont),
-        &text.DrawOptions{
-            // ColorScale: text.NewColorScale(color.White),
-            // GeoM: ebiten.GeoM{}.Translate(screenWidth/2, screenHeight - margin - 30),
-            // Anchor: text.AnchorCenter, // Center the text horizontally
-        },
-    )
+	screen.DrawImage(image, optsImg)
+	//---
+
+		face := &text.GoTextFace{
+			Source:    assets.JetBrainsFaceSource,
+			Direction: text.DirectionLeftToRight,
+			Size:      24,
+		}
+w, _ := text.Measure("Ken Thompson", face, 0) //w,h
+	// write the text
+	optsTxt := &text.DrawOptions{}
+	optsTxt.ColorScale.Scale(1.0, 0.4, 0.7, 1.0) // pink (R,G,B,A)
+	optsTxt.GeoM.Translate(float64(screenWidth-w)/2, float64(screenHeight-margin-40))
+
+	//optsTxt.GeoM :=ebiten.GeoM{}.Translate(screenWidth/2, screenHeight - margin - 30)
+
+	text.Draw(
+		screen,
+		"Ken Thompson",
+		face,
+		optsTxt,
+	)
 }

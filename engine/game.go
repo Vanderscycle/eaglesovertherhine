@@ -11,7 +11,6 @@ import (
 type GameEngine struct {
 	gameState     int
 	introStartTime time.Time
-	startImage    *ebiten.Image
 }
 
 const (
@@ -43,7 +42,7 @@ func (g *GameEngine) Draw(screen *ebiten.Image) {
 	case stateIntro:
 		// Only show start image after 1 second
 		if time.Since(g.introStartTime) >= 1*time.Second {
-g.startScreen(screen, 25)
+  startScreen(assets.StartSprites,screen, 25)
 		}
 		// First second is just black screen
 	case stateGame:
@@ -62,7 +61,7 @@ func NewGame() *GameEngine {
 	g := &GameEngine{
 		gameState:     stateIntro,
 		introStartTime: time.Now(),
-		startImage:    assets.StartSprites, // Assuming this returns *ebiten.Image
+
 	}
 	ebiten.SetWindowTitle("Eagles Over the Rhine")
 	// eventually you'd want a menu to change the size
