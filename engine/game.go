@@ -23,7 +23,7 @@ func (g *GameEngine) Update() error {
 	switch g.gameState {
 	case stateIntro:
 		// Check if intro time has elapsed (3 seconds = 1s wait + 2s display)
-		if time.Since(g.introStartTime) >= 5*time.Second {
+		if time.Since(g.introStartTime) >= 10*time.Second {
 			g.gameState = stateMenu // or stateGame
 		}
 	case stateGame:
@@ -42,8 +42,10 @@ func (g *GameEngine) Draw(screen *ebiten.Image) {
 	switch g.gameState {
 	case stateIntro:
 		// Only show start image after 1 second
-		if time.Since(g.introStartTime) >= 1*time.Second {
-			startScreen(assets.StartSprites, screen, 25)
+		if time.Since(g.introStartTime) >= 1*time.Second && time.Since(g.introStartTime) <= 5*time.Second{
+			startScreen1(assets.StartSprites, "Ken Thompson", screen, 25)
+		} else if time.Since(g.introStartTime) > 5*time.Second {
+			startScreen2(assets.StartGolang, "Made with Ebiten",screen, 25)
 		}
 		// First second is just black screen
 	case stateGame:

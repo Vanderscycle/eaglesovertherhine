@@ -30,6 +30,7 @@ func init() {
 
 // --- images ---
 var StartSprites = mustLoadImage("start/ken.jpg")
+var StartGolang = mustLoadImage("start/golang.jpeg")
 
 func mustLoadImage(name string) *ebiten.Image {
 	f, err := assets.Open(name)
