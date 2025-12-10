@@ -25,10 +25,10 @@ func main() {
 	firstCompany.Status()
 	firstCompany.ListSoldiers()
 
-	firstSoldat := pops.NewSoldier(pops.AdjudantMajor,pops.France,pops.Nco)
+	firstSoldat := pops.NewSoldier(pops.AdjudantMajor, pops.France, pops.Nco)
 	firstSoldat.Status()
 
-	firstCiv:= pops.NewCivilian(pops.France,pops.Farmer)
+	firstCiv := pops.NewCivilian(pops.France, pops.Farmer)
 	firstCiv.Status()
 
 	g := engine.NewGame()

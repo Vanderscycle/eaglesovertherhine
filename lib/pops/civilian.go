@@ -16,13 +16,13 @@ type CivilianPop struct {
 	// age       int16
 }
 
-func NewCivilian( nation Nation, role CivilianRole) CivilianPop {
+func NewCivilian(nation Nation, role CivilianRole) CivilianPop {
 	c := CivilianPop{FirstName: gofakeit.FirstName(), LastName: gofakeit.LastName(), Nation: nation, Role: role}
 	return c
 }
 
 func (c CivilianPop) Status() {
-    b, _ := json.Marshal(c)
-    //b, _ := json.MarshalIndent(c, "", "  ")
-    fmt.Println(string(b))
+	b, _ := json.Marshal(c)
+	//b, _ := json.MarshalIndent(c, "", "  ")
+	fmt.Println(string(b))
 }

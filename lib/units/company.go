@@ -71,7 +71,7 @@ func (c *company) EarnBloodName(name string) {
 }
 
 func (c company) ListSoldiers() {
-	for i := range c.soldats{
+	for i := range c.soldats {
 		c.soldats[i].Status()
 	}
 }

@@ -1,13 +1,13 @@
 package engine
 
-import (
-)
+import ()
 
-type OptionMenu struct{
+type OptionMenu struct {
 	height int
-	width int
+	width  int
 }
+
 var DefaultOptionMenu = OptionMenu{
 	height: 1024,
-	width: 768,
+	width:  768,
 }

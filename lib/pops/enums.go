@@ -14,19 +14,19 @@ const (
 	Sailor
 	Clergyman
 	Baker
-MilitarySupport
+	MilitarySupport
 )
 
 var AssignedCivilianRole = map[CivilianRole]string{
-	Farmer: "Farmer",
-	Miner: "Miner",
-	Physician: "Physician",
-	Researcher: "Researcher",
-	FactoryWorker: "Factory Worker",
-	HouseKeeper: "Housekeeper",
-	Sailor: "Sailor",
-	Clergyman: "Clergyman",
-	Baker: "Baker",
+	Farmer:          "Farmer",
+	Miner:           "Miner",
+	Physician:       "Physician",
+	Researcher:      "Researcher",
+	FactoryWorker:   "Factory Worker",
+	HouseKeeper:     "Housekeeper",
+	Sailor:          "Sailor",
+	Clergyman:       "Clergyman",
+	Baker:           "Baker",
 	MilitarySupport: "Military Support",
 }
 
@@ -35,7 +35,7 @@ func (c CivilianRole) String() string {
 }
 
 func (c CivilianRole) MarshalJSON() ([]byte, error) {
-    return json.Marshal(c.String())
+	return json.Marshal(c.String())
 }
 
 type MilitaryRole int
@@ -63,7 +63,7 @@ func (m MilitaryRole) String() string {
 }
 
 func (m MilitaryRole) MarshalJSON() ([]byte, error) {
-    return json.Marshal(m.String())
+	return json.Marshal(m.String())
 }
 
 type Sex int
@@ -117,7 +117,7 @@ func (r Rank) String() string {
 }
 
 func (r Rank) MarshalJSON() ([]byte, error) {
-    return json.Marshal(r.String())
+	return json.Marshal(r.String())
 }
 
 type Nation int
@@ -139,5 +139,5 @@ func (n Nation) String() string {
 }
 
 func (n Nation) MarshalJSON() ([]byte, error) {
-    return json.Marshal(n.String())
+	return json.Marshal(n.String())
 }

@@ -32,9 +32,9 @@ func NewBattalion(name string, template BattalionCompanyTemplate, companyTemplat
 	b.chefDeBattalion = append(b.chefDeBattalion, pops.NewSoldier(pops.ChefDeBattalion, nation, pops.Officier))
 	b.flagBearer = pops.NewSoldier(pops.Caporal, nation, pops.MusicColours)
 
-	for i:=0; i<=4;i++{
-		b.drivers = append(b.drivers,pops.NewCivilian(b.nation, pops.MilitarySupport))
-		b.cantinieres = append(b.drivers,pops.NewCivilian(b.nation, pops.MilitarySupport))
+	for i := 0; i <= 4; i++ {
+		b.drivers = append(b.drivers, pops.NewCivilian(b.nation, pops.MilitarySupport))
+		b.cantinieres = append(b.drivers, pops.NewCivilian(b.nation, pops.MilitarySupport))
 	}
 
 	// company generation

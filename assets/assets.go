@@ -17,6 +17,7 @@ var assets embed.FS
 //go:embed JetBrainsMono-Regular.ttf
 var jetBrainsTTF []byte
 
+// --- text ---
 var JetBrainsFaceSource *text.GoTextFaceSource
 
 func init() {
@@ -27,6 +28,7 @@ func init() {
 	JetBrainsFaceSource = s
 }
 
+// --- images ---
 var StartSprites = mustLoadImage("start/ken.jpg")
 
 func mustLoadImage(name string) *ebiten.Image {
